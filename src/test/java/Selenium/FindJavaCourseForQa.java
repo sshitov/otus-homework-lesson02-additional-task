@@ -63,7 +63,7 @@ public class FindJavaCourseForQa {
     public void goToLessons(){
         String expectTitle = "Программирование";
 
-        WebElement lessonsButton = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[5]/div/div[2]/a"));
+        WebElement lessonsButton = driver.findElement(By.cssSelector("body div.transitional-main__stat > div > div:nth-child(2) > a"));
         lessonsButton.click();
         //Подождать
         WebElement element = driver.findElement(By.tagName("h1"));
@@ -79,7 +79,7 @@ public class FindJavaCourseForQa {
     public void filter(){
         String expectTitle = "Тестирование";
 
-        WebElement testingTab = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div/div/a[6]"));
+        WebElement testingTab = driver.findElement(By.cssSelector("body div.js-lessons > div:nth-child(2) > div a:nth-child(6)"));
         testingTab.click();
         //Подождать
         WebElement element = driver.findElement(By.tagName("h1"));
@@ -93,16 +93,16 @@ public class FindJavaCourseForQa {
 
     @Test(description = "open Java QA Automation Engineer page", dependsOnMethods = "filter")
     public void openCoursePage() {
-        WebElement courseChoose = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[3]/div/div/a[2]/div/div[4]"));
+        WebElement courseChoose = driver.findElement(By.cssSelector("body div.container.container-lessons a:nth-child(1) div.lessons__new-item-title.lessons__new-item-title_with-bg.js-ellipse"));
         courseChoose.click();
-        // logger.error("Choose section title not meet to Expected");
+
     }
 
     @Test(description = "Checking the availability of the course page", dependsOnMethods = "openCoursePage")
     public void checkTheCoursePage(){
         String expectTitle = "Java QA Automation Engineer";
 
-        WebElement element = driver.findElement(By.tagName("h1"));
+        WebElement element = driver.findElement(By.cssSelector("body h1"));
         String textToVerify = element.getText();
         if (!textToVerify.equals(expectTitle)){
             logger.error("Choose section title not meet to Expected");
