@@ -14,14 +14,14 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class DSL {
     // initialize properties
-    MyConfig myConfig = ConfigFactory.create(MyConfig.class, System.getProperties());
+    public static MyConfig myConfig = ConfigFactory.create(MyConfig.class, System.getProperties());
     // initialize logger
     public static final Logger logger = LogManager.getLogger(FindJavaCourseForQa.class.getName());
 
     // common test variables
     protected WebDriver driver;
     protected WebDriverWait wait;
-    String baseUrl = myConfig.baseUrl();
+    protected static String baseUrl = myConfig.baseUrl();
 
     // test methods
 
